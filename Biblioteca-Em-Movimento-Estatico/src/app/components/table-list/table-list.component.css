@@ -1,0 +1,10 @@
+.line-table {
+    min-height: 50px !important;
+}
+.noContent {
+    color: #bdbdbd;
+}
+.less-margin {
+    margin-top: -7%;
+    margin-right: -4%;
+}

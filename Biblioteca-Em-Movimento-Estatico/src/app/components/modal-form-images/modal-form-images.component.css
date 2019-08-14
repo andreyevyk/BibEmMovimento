@@ -1,0 +1,7 @@
+.modal {
+    background-color: transparent !important;
+    min-height: 100%;
+}
+.m-btn-footer {
+    margin: 6px !important;
+}

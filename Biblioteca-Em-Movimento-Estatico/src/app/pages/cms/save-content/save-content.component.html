@@ -1,0 +1,12 @@
+<div class="card bg-white text-center border-0 pt-8 m-0">
+  <div class="heading">
+      <div class="title text-center arrow-right">
+        <h4 class="card-title">Conteúdo</h4>
+        <img class="hidden-xs" src="assets/images/right-arrow.png" alt="" />
+      </div>
+  </div>	
+  <div class="card-body pt-0">    
+    <app-form-content #form [(ngModel)]="saveForm" [idEdition]="idEdition" [pageName]="getPageName()" (save)="save()">
+    </app-form-content>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+
+<ng-container *ngIf="saveForm; else spinner">
+  <form class="form-group m-form" [formGroup]="saveForm">
+    <ng-container *ngIf="!pageName">
+      <!-- PÁGINA -->
+      <div class="form-group">
+          <label [class.error]="hasErros('page')" 
+          class="font-form d-flex justify-content-start font-size-1">Página</label>
+  
+          <select class="form-control form-control-lg" formControlName="page" (ngModelChange)="setPageName($event)">
+            <option value="" disabled selected>Selecione a página</option>
+            <option value="project">Projetos</option>
+            <option value="gallery">Galeria</option>
+            <option value="poetry">Poesia</option>
+            <option value="info">Informações</option>
+          </select>
+            <div *ngIf="hasErros('page')" class="mb-2">
+              <label *ngIf="saveForm?.controls['page']?.errors?.required"
+                class="error">Campo necessário</label>
+            </div>
+        </div>
+    </ng-container>
+  
+    <ng-container *ngIf="pageName" >
+      <div class="row p-1">
+        <div class="col">
+            <!-- TÍTULO -->
+            <div class="form-group input-field" *ngIf="isRequiredInPage(['poetry', 'project', 'gallery'])">
+              <input type="text" class="form-control" formControlName="title"
+              [class.has-error]="hasErros('title')">
+      
+              <label [class.error]="hasErros('title')" [class.active]="saveForm?.controls['title'].value"
+                class="font-form">Título</label>
+            </div>
+              <div *ngIf="hasErros('title')" class="mb-2">
+                <label *ngIf="saveForm?.controls['title']?.errors?.required"
+                  class="error">Campo necessário</label>
+              </div>
+        </div>
+        <div class="col" *ngIf="isRequiredInPage(['poetry'])">
+          <!-- INFORMAÇÕES ADICIONAIS -->
+          <div class="form-group input-field">
+              <input type="text" class="form-control" formControlName="add_Info"
+              [class.has-error]="hasErros('add_Info')">
+      
+              <label [class.error]="hasErros('add_Info')" [class.active]="saveForm?.controls['add_Info'].value"
+                class="font-form">Autor</label>
+            </div>
+              <div *ngIf="hasErros('add_Info')" class="mb-2">
+                <label *ngIf="saveForm?.controls['add_Info']?.errors?.required"
+                  class="error">Campo necessário</label>
+              </div>
+        </div>
+      </div>
+  
+      <!-- CONTEÚDO -->
+      <div class="form-group input-field mt-2 mb-2" *ngIf="isRequiredInPage(['poetry', 'info', 'project'])">
+        <textarea class="materialize-textarea" rows="3" formControlName="content"
+        [class.has-error]="hasErros('content')"></textarea>
+        
+        <label [class.error]="hasErros('content')"  [class.active]="saveForm?.controls['content'].value"
+        class="font-form">Conteúdo</label>
+      </div>
+        <div *ngIf="hasErros('content')" class="mb-2">
+          <label *ngIf="saveForm?.controls['content']?.errors?.required"
+            class="error">Campo necessário</label>
+        </div>
+  
+      <!-- IMAGEM -->
+      <div class="form-group input-field pl-0" *ngIf="isRequiredInPage(['project', 'gallery', 'info'])">
+        <input type="text" class="form-control" formControlName="imgCover_Src"
+        [class.has-error]="hasErros('imgCover_Src')">
+  
+        <label [class.error]="hasErros('imgCover_Src')" [class.active]="saveForm?.controls['imgCover_Src'].value"
+          class="font-form">Caminho da imagem</label>
+      </div>
+        <div *ngIf="hasErros('imgCover_Src')" class="mb-2">
+          <label *ngIf="saveForm?.controls['imgCover_Src']?.errors?.required"
+            class="error">Campo necessário</label>
+        </div>
+
+      <div>        
+        <ng-container *ngIf="isRequiredInPage(['gallery']) && idEdition">
+          <modal-form-images [idEdition]="idEdition">
+          </modal-form-images>
+        </ng-container>       
+      </div>
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-light waves-effect w-100 mt-4"
+              (click)="back()">
+              Voltar
+            </button>
+          </div>
+          <div class="col">     
+          </div>
+          <div class="col">
+            <button class="btn btn-dark waves-effect w-100 mt-4"
+              (click)="save.emit()">
+              Salvar {{pageName}}
+            </button>
+          </div>
+        </div> 
+    </ng-container>
+    
+  </form>
+</ng-container>
+<ng-template #spinner>
+  <div class="d-flex justify-content-center w-100 _spinner">
+    <mat-progress-spinner
+        [mode]="'indeterminate'">
+    </mat-progress-spinner>
+  </div>
+</ng-template>

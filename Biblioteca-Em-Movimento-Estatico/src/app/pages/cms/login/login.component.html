@@ -1,0 +1,66 @@
+<div class="row login-box w-100 m-0">
+  <div class="col s12 z-depth-4 card-panel">
+    <div class="input-field s12 center mt-3">
+      <img src="../../../../assets/images/BEM_logo.png" class="img-login" 
+      title="Biblioteca em movimento">
+    </div>
+    <form class="form-group m-5" [formGroup]="loginForm" *ngIf="!isForgoutPassword; else forgoutPassword">
+      <div class="form-group input-field pl-0">
+        <input type="text" class="form-control" formControlName="username"
+        [class.has-error]="hasErros('username')">
+
+        <label [class.error]="hasErros('username')"
+         class="font-form">Usuário</label>
+      </div>
+        <div *ngIf="hasErros('username')" class="mb-2">
+          <label *ngIf="loginForm?.controls['username']?.errors?.required"
+            class="error">Campo necessário</label>
+        </div>
+      <div class="form-group input-field pl-0 mt-2">
+        <input type="password" class="form-control" formControlName="password"
+        [class.has-error]="hasErros('password')">
+
+        <label [class.error]="hasErros('password')" 
+        class="font-form">Senha</label>
+      </div>
+        <div *ngIf="hasErros('password')" class="mb-2">
+          <label *ngIf="loginForm?.controls['password']?.errors?.required"
+            class="error">Campo necessário</label>
+        </div>
+      <label class="mt-2">
+        <input type="checkbox" formControlName="remember"/>
+        <span>Lembrar a senha</span>
+      </label><br>
+      <label class="mt-2 cursor" (click)="changeForm()">
+        <span>Esqueceu a senha?</span>
+      </label>
+
+      <button class="btn btn-dark waves-effect w-100 mt-4" [disabled]="hasErros('username') || hasErros('password')"
+        (click)="doLogin()">
+        Efetuar login
+      </button>
+    </form>
+  </div>
+</div>
+
+<ng-template #forgoutPassword>
+  <form class="m-3">
+    <div class="form-group input-field pl-0">
+      <input type="text" class="form-control" #inputEmail>
+
+      <label class="font-form">E-mail</label>
+    </div>
+    
+    <div class="row">
+      <button class="btn btn-light waves-effect col m-2" 
+      (click)="changeForm()">
+        Voltar
+      </button>
+
+      <button class="btn btn-dark waves-effect col m-2" 
+      (click)="changePassword(inputEmail.value)">
+        Enviar nova senha
+      </button>
+    </div>
+  </form>
+</ng-template>

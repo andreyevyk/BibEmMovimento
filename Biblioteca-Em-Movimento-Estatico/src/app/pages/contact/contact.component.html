@@ -1,0 +1,56 @@
+<div class="card bg-white text-center border-0 pt-8 m-0">
+  <div class="heading">
+    <div class="title text-center arrow-right">
+      <h4 class="card-title">Contatos</h4>
+      <img class="hidden-xs" src="assets/images/right-arrow.png" alt="" />
+    </div>
+  </div>	  
+  <div class="row w-100">
+    <div class="col">
+      <form class="mr-5 ml-5 mb-5" [formGroup]="contactForm">
+        <div class="form-row">
+          <div class="form-group input-field col-md-6 pl-0">
+            <input type="text" class="form-control" formControlName="name"
+            [class.has-error]="hasErros('name')">
+            <label class="font-form" [class.error]="hasErros('name')">Nome</label>
+          </div>
+          <div class="form-group input-field col-md-6 pl-0">
+            <input type="email" class="form-control" formControlName="email"
+            [class.has-error]="hasErros('email')">
+            <label class="font-form" [class.error]="hasErros('email')">E-mail</label>
+          </div>
+        </div>
+        <div class="form-group input-field pl-0 mb-5">
+          <input type="text" class="form-control" formControlName="title"
+          [class.has-error]="hasErros('title')">
+          <label class="font-form" [class.error]="hasErros('title')">Título</label>
+        </div>
+
+        <div class="form-group input-field mt-2 mb-2">
+          <textarea class="materialize-textarea" rows="3" formControlName="content"
+          [class.has-error]="hasErros('content')"></textarea>
+          
+          <label class="font-form" [class.error]="hasErros('content')">Mensagem</label>
+        </div>
+        
+        <button class="btn btn-dark waves-effect btn-large" (click)="send()">
+          Enviar
+        </button>
+      </form>
+    </div>
+    <div class="col-4 mt-5 text-center">
+      <div>
+        <img class="p-1" src="../../../assets/icons/call_black_36dp.png">
+        <p>(71) X XXXX-XXXX</p>
+      </div>
+      <div>
+        <img class="p-1" src="../../../assets/icons/email_black_36dp.png">
+        <p>programabibliotecaemmovimento@gmail.com</p>
+      </div>
+      <div>
+        <img class="p-1" src="../../../assets/icons/person_black_36dp.png">
+        <p>facebook.com/bibliotecaemmovimento/</p>
+      </div>
+    </div>
+  </div>
+</div>

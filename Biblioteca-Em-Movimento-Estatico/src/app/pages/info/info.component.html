@@ -1,0 +1,31 @@
+<div class="card bg-white text-center border-0 pt-8 m-0">
+  <div class="heading">
+      <div class="title text-center arrow-right">
+        <h4 class="card-title">Quem somos?</h4>
+        <img class="hidden-xs" src="assets/images/right-arrow.png" alt="" />
+      </div>
+  </div>	
+  <div class="card-body">
+      <div class="feature-wrapper">
+        <div class="row" *ngIf="infoContent; else spinner">
+          <ng-container *ngFor="let content of infoContent; let i = index">
+            <div *ngIf="i%2 == 0" class="w-100"></div>
+            <div class="col-6 mb-3">
+              <div class="features-content h-100"> 
+                <!-- <img class="m-3" src="{{content.imgCover_Src}}"/> -->
+                <h4><i class="{{content.imgCover_Src}}"></i></h4>
+                <p class="m-2 text-justify text-jump-line" style="font-size: 17px"> {{content.content}} </p>
+              </div>
+            </div>
+          </ng-container>           
+        </div>
+      </div>
+  </div>
+</div>
+<ng-template #spinner>
+    <div class="d-flex justify-content-center w-100 _spinner">
+        <mat-progress-spinner
+            [mode]="'indeterminate'">
+        </mat-progress-spinner>
+    </div>
+</ng-template>

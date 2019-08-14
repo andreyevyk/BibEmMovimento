@@ -1,0 +1,61 @@
+version: '3.4'
+
+networks:
+  bibemmovimento-net:
+    driver: bridge 
+
+services:
+  bibemmovimento-frontend:
+    image: biblioteca-em-movimento-estatico
+    build:
+      context: ./Biblioteca-Em-Movimento-Estatico
+    depends_on:
+      - bibemmovimento-backend
+    ports:
+      - "80:80"  
+    networks: 
+      - bibemmovimento-net
+
+  bibemmovimento-backend:
+    image: bibemmovimento-backend
+    depends_on:
+      - "postgres_image"
+    build:
+      context: ./BibEmMovimento-BackEnd
+    ports:
+      - "4000:80"  
+    environment:
+      DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=BibEmMovimento;username=admin;password=xLsnKiLkqFse"
+    networks:
+      - bibemmovimento-net 
+
+  postgres_image:
+    image: postgres:latest
+    ports:
+      - "5432"
+    restart: always
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+      - ./dbscripts/seed.sql :/docker-entrypoint-initdb.d/seed.sql
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "xLsnKiLkqFse"
+      POSTGRES_DB: "BibEmMovimento"
+    networks:
+      - bibemmovimento-net 
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "andrey@admin.com.br"
+      PGADMIN_DEFAULT_PASSWORD: "garrido11"
+    ports:
+      - "16543:80"
+    depends_on:
+      -   postgres_image
+    networks:
+      - bibemmovimento-net 
+
+
+volumes:
+  db_volume:

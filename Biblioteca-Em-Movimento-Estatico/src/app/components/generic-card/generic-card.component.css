@@ -1,0 +1,30 @@
+.img-project {
+    max-height: 180px;
+    margin: auto;
+}
+
+.img-gallery {
+    height: 190px;
+    margin: auto;
+}
+
+.shadow-gallery:hover {
+	transition: all 1s ease;
+    box-shadow: 0 .5rem 1rem rgb(255, 192, 56, 1)!important;
+}
+
+.shadow-none {
+    box-shadow: none !important;
+}
+
+.font-custom-title {
+    font-family: 'Allura', cursive;
+}
+.font-custom-content {
+    font-family: 'Comfortaa', cursive;
+}
+
+.card-body {
+    max-height: 300px;
+    overflow-y: auto;
+}

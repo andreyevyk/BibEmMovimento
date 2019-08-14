@@ -1,0 +1,8 @@
+<div class="m-filter">
+  <div class="input-field">
+    <!-- <label>{{searchBy}}</label> -->
+    <i class="material-icons prefix mt-2">search</i>
+    <input placeholder="Busca por {{searchBy}}"  type="text" class="validate"
+    [ngModel]="search" (ngModelChange)="filterContent($event)">
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<app-open-site></app-open-site>
+<div class="card bg-white text-center border-0 m-0">
+    <div class="heading mt-3">
+        <div class="title text-center arrow-right row w-100">
+          <div class="col-3"></div>
+          <div class="col-5">
+                <img class="hidden-xs" src="assets/images/left-arrow.png" alt="" />
+                <h4 class="card-title">Projetos em destaque</h4>
+          </div>
+          <div class="col">
+            <input-filter [searchBy]="'title'" [page]="'project'" [(ngModel)]="projectCards"></input-filter>
+          </div>
+        </div>
+    </div>	
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="portfolio-wrap w-100" *ngIf="pageContent; else spinner">
+                    <ng-container *ngFor="let content of pageContent; let i = index">
+                        <app-generic-card [content]="content" [isLeft]="orderCards(i)"></app-generic-card>
+                    </ng-container> 
+                    <ngb-pagination
+                        (pageChange)="loadContent($event)"
+                        [(page)]="page"
+                        [pageSize]="limitContent"
+                        [collectionSize]="contentLength">
+                    </ngb-pagination>       
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #spinner>
+    <div class="d-flex justify-content-center w-100 _spinner">
+        <mat-progress-spinner
+            [mode]="'indeterminate'">
+        </mat-progress-spinner>
+    </div>
+</ng-template>

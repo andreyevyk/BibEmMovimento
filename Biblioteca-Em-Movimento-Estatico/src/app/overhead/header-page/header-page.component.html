@@ -1,0 +1,51 @@
+<!-- <div class='preloader'><div class='loaded'>&nbsp;</div></div> -->
+<nav class="fixed-top mb-2 pb-0">
+  <div class="nav-wrapper bg-orange">
+    <div class="brand-logo grey darken-3 pl-3 pr-3">
+      <a class="=text-white">B.E.M.</a>
+    </div>
+    <ul class="right hide-on-med-and-down ml-auto h-100" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link cursor text-white" 
+        [routerLink]="['/home']">Início</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link cursor text-white" 
+        [routerLink]="['/studant-poetry']">Poesias</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link cursor text-white" 
+        [routerLink]="['/gallery']">Galeria</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link cursor text-white" 
+        [routerLink]="['/amarelinho']">Amarelinho</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link cursor text-white" 
+        [routerLink]="['/info']">Quem somos?</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link cursor text-white"  
+        [routerLink]="['/contact']">Contato</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link cursor text-white" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        [routerLink]="['/cms/list']">
+          <i *ngIf="!isAuthenticated(); else exit" class="material-icons" title="Admin">assignment_ind</i>
+          <ng-template #exit>
+            <i class="material-icons" title="Sair">exit_to_app</i>
+          </ng-template>
+        </a>
+        <div class="dropdown-menu p-0" [class.d-none]="!isAuthenticated()" aria-labelledby="dropdownMenu">
+          <button class="dropdown-item btn-sm p-3" type="button"
+            (click)="logout()">
+            <p class="text-center">
+              Sair
+            </p>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

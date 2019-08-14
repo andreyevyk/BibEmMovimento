@@ -1,0 +1,97 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+tag-input-form {
+    display: none !important;
+}
+
+.mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
+    transform: none !important;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #ffc038 !important;
+}
+._spinner {
+    min-height: 200px;
+}
+
+.cursor {
+    cursor: pointer;
+}
+.card-size {
+    width: 18rem;
+}
+.card-align {
+    margin: auto;
+}
+.nobull {
+    list-style-type: none;
+}
+.bg-orange {
+    background-color: #ffc038;
+}
+.text-align-left {
+    text-align: left;
+}
+.pt-8 {
+    padding-top: 8%;
+}
+.heading {
+    margin-bottom: 2rem !important;
+}
+
+/* label focus color */
+.input-field input:focus + label {
+    color: #ffc038 !important;
+}
+/* label underline focus color */
+.input-field input:focus {
+    border-bottom: 1px solid #ffc038 !important;
+    box-shadow: 0 1px 0 0 #ffc038 !important
+}
+
+/* label focus color */
+.input-field textarea:focus + label {
+    color: #ffc038 !important;
+}
+/* label underline focus color */
+.input-field textarea:focus {
+    border-bottom: 1px solid #ffc038 !important;
+    box-shadow: 0 1px 0 0 #ffc038 !important
+}
+
+.error {
+    color: #ef5350 !important;
+}
+.has-error {
+    border-bottom: 1px solid #ef5350 !important;
+}
+.btn-primary:focus {
+    background-color: #001fff !important;
+}
+.alert-danger {
+    border-color: #ff8a80;
+    background-color: #ff8a80 !important;
+}
+.alert-primary {
+    border-color: #82b1ff;
+    background-color: #82b1ff !important;
+}
+.alert-warning {
+    border-color: #ffff8d;
+    background-color: #ffff8d !important;
+}
+
+.waves-effect {
+    z-index: 0 !important;
+}
+
+.materialize-textarea {
+    height: 8rem !important;
+    overflow-y: scroll !important;
+}
+
+.text-jump-line {
+    white-space: pre-wrap
+}

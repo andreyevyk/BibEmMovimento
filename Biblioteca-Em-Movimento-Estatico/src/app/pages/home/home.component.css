@@ -1,0 +1,10 @@
+img {
+    max-height: 550px;
+    margin: auto;
+}
+.heading .title.arrow-right {
+    margin-top: -50px !important;
+}
+.processSpinner {
+    margin: 50%;
+}

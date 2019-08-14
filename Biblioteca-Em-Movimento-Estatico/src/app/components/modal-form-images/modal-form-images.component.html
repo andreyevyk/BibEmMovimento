@@ -1,0 +1,68 @@
+
+<div class="form-group input-field row">
+  <div class="col-9">
+    <tag-input [ngModel]="photosAlbum" [displayBy]="'title'" 
+    (onSelect)="onSelect($event); basicModal.show()" (onRemove)="onRemoved($event)" #input>
+      <ng-template let-item="item" let-index="index">
+          <span>
+            {{ item.title }}
+          </span>
+          <delete-icon (click)="input.removeItem(item, index)"></delete-icon>
+      </ng-template>
+    </tag-input>
+  </div>
+  <div class="col-3">    
+    <button class="btn btn-primary waves-effect  w-100 mt-4" (click)="refrashForm(); basicModal.show()">
+      Cadastrar imagem
+    </button>
+  </div>
+</div>
+
+<div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content p-3">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel">Cadastro de imagens</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+            <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form class="form-group m-form" [formGroup]="cadImages">
+            <div class="form-group input-field">
+              <input type="text" class="form-control" formControlName="title"
+              [class.has-error]="hasErros('title')">
+      
+              <label [class.error]="hasErros('title')" [class.active]="cadImages?.controls['title'].value"
+                class="font-form">Título</label>
+            </div>
+  
+            <div class="form-group input-field">
+              <input type="text" class="form-control" formControlName="img"
+              [class.has-error]="hasErros('img')">
+      
+              <label [class.error]="hasErros('img')" [class.active]="cadImages?.controls['img'].value"
+                class="font-form">Caminho da imagem</label>
+            </div>
+          </form>
+        </div>
+
+        <div *ngIf="cadImages?.controls['img'].value" class="col-md-6 col-sm-6 col-xs-12">
+            <img class="portfolio-img img-responsive img-project" src="{{cadImages?.controls['img'].value}}" alt="" />
+        </div>
+
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary waves-light m-btn-footer" 
+          aria-label="Close" (click)="basicModal.hide()" mdbRippleRadius>
+            Fechar
+          </button>
+          <button type="button" class="btn btn-primary waves-light m-btn-footer" 
+          (click)="save()" mdbRippleRadius>
+            Salvar mudanças
+          </button>
+      </div>
+    </div>
+  </div>
+</div>

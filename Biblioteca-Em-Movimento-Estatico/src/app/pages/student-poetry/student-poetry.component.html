@@ -1,0 +1,39 @@
+<div class="card bg-white text-center border-0 pt-8 m-0">
+    <div class="heading">
+        <div class="title text-center arrow-right row w-100">
+          <div class="col"></div>
+          <div class="col">
+            <img class="hidden-xs" src="assets/images/left-arrow.png" alt="" />
+            <h4 class="card-title">Poesias</h4>
+          </div>
+          <div class="col">
+            <input-filter [searchBy]="'title'" [page]="'poetry'" [(ngModel)]="poetryCards"></input-filter>
+          </div>
+        </div>
+    </div>	
+    <div class="card-body">
+        <div class="container">
+          <div class="row" *ngIf="pageContent; else spinner">
+            <ng-container *ngFor="let content of pageContent; let i = index">
+              <div *ngIf="i%4 == 0" class="w-100"></div>
+              <div class="col-3 mb-5">
+                <app-generic-card [content]="content"></app-generic-card>
+              </div>
+            </ng-container>           
+          </div>
+          <ngb-pagination
+              (pageChange)="loadContent($event)"
+              [(page)]="page"
+              [pageSize]="limitContent"
+              [collectionSize]="contentLength">
+          </ngb-pagination>       
+        </div>
+    </div>
+</div>
+<ng-template #spinner>
+    <div class="d-flex justify-content-center w-100 _spinner">
+        <mat-progress-spinner
+            [mode]="'indeterminate'">
+        </mat-progress-spinner>
+    </div>
+</ng-template>

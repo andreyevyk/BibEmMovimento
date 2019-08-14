@@ -1,0 +1,50 @@
+<ng-container [ngSwitch]="content.page">
+  <ng-container *ngSwitchCase="1">
+
+    <div class="card card-size card-align border-0 shadow-none">
+      <div class="card-body bg-white shadow shadow-gallery h-100 cursor border-0 p-0">
+        <img class="card-img-top img-gallery" src="{{content.imgCover_Src}}" alt="Card image cap">
+      </div>
+      <div class="card-body m-2">
+        <h5 class="card-title text-center">{{content.title}}</h5>
+      </div>
+    </div>
+
+  </ng-container>
+  <ng-container *ngSwitchCase="2">
+
+    <div class="card bg-light card-size card-align shadow border-0 h-100">
+      <div class="card-header bg-white">
+        <h2 class="card-title font-custom-title">{{content.title}}</h2>
+      </div>
+      <div class="card-body">
+        <p class="card-text font-custom-content text-jump-line">{{content.content}}</p>
+      </div>
+      <div *ngIf="content.add_Info" class="card-footer text-muted">
+          Autor(a): <p class="card-text font-custom-title">{{content.add_Info}}</p>
+      </div>
+    </div>
+
+  </ng-container>
+  <ng-container *ngSwitchCase="0">
+
+    <div class="portfolio mb-5 pt-5 border-top">
+      <div *ngIf="isLeft" class="col-md-6 col-sm-6 col-xs-12">
+          <img class="portfolio-img img-responsive img-project" src="{{content.imgCover_Src}}" alt="" />
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="portfolio-item">
+              <h4 class="text-align-left">{{content.title}}</h4>
+              <p class="text-align-left text-jump-line text-justify">
+                  {{content.content}}    
+              </p>
+              <!-- <button class="btn pt-btn btn-primary">View More</button> -->
+          </div>
+      </div>
+      <div *ngIf="!isLeft" class="col-md-6 col-sm-6 col-xs-12">
+          <img class="portfolio-img img-responsive img-project" src="{{content.imgCover_Src}}" alt="" />
+      </div>
+    </div>
+
+  </ng-container>
+</ng-container>
