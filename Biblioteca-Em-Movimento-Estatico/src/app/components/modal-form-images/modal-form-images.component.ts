@@ -37,7 +37,7 @@ export class ModalFormImagesComponent implements OnInit {
     this.getPhotos(this.idEdition);
   }
 
-  public refrashForm() {
+  private refrashForm() {
     this.cadImages = this.fb.group({
       id: [''],
       title: ['', [Validators.required]],

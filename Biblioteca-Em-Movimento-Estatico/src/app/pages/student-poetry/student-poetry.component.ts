@@ -14,8 +14,6 @@ import { PageGenericComponent } from 'src/app/components/page-generic/page-gener
 })
 export class StudentPoetryComponent extends PageGenericComponent implements OnInit {
 
-  poetryCards: any;
-
   constructor(
     private _apiService: ApiService,
     private _notificationService: NotificationService

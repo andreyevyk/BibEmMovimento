@@ -16,8 +16,7 @@ import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from 'ngx-gal
 export class GalleryComponent extends PageGenericComponent implements OnInit {
 
   photosAlbum: NgxGalleryImage[];
-  galleryCards: any;
-  
+
   galleryOptions = [
     {
       'image': false,

@@ -10,7 +10,7 @@ import { filter, map, catchError } from 'rxjs/operators';
 })
 export class GenericCrudService {
 
-  private baseURL  = '/api/Pages';
+  private baseURL = 'http://localhost:6000/api/Pages';
   protected httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
