@@ -66,7 +66,7 @@ export class GenericCrudService {
       }
     }
 
-    return this.http.get<any>(url, {params});
+    return this.http.get<any>(url, {params, headers: this.httpOptions.headers});
   }
 
   POST(content: PageContent) {
