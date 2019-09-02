@@ -52,17 +52,17 @@ export class ApiService extends GenericCrudService {
   }
 
   sendMail(content: any) {
-    return this.genericRequest('POST', '/api/Pages/contact', content);
+    return this.genericRequest('POST', 'http://167.99.62.84:4000/api/Pages/contact', content);
   }
 
   login(content: any) {
-    return this.genericRequest('POST', '/api/User', content);
+    return this.genericRequest('POST', 'http://167.99.62.84:4000/api/User', content);
   }
 
   changePassword(email: string) {
     const params = new HttpParams().set('email', email);
 
-    return this.http.put<any>('/api/User', null, {params});
+    return this.http.put<any>('http://167.99.62.84:4000/api/User', null, {params});
   }
 
 }
