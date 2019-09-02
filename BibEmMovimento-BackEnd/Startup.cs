@@ -35,6 +35,9 @@ namespace BibEmMovimento_BackEnd
                     connectionString
                 )
             );
+
+            services.AddCors();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -52,6 +55,11 @@ namespace BibEmMovimento_BackEnd
             }
 
             app.UseHttpsRedirection();
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());  
             app.UseMvc();
         }
     }
