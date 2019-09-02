@@ -73,6 +73,8 @@ export class SaveContentComponent implements OnInit {
   }
 
   save() {
+    this.validationImageLink();
+
     if (this.saveForm.valid) {
       const observable = (this.idEdition) ?
         this.api.PUT(this.idEdition, this.assignEditionValue()) :
@@ -114,6 +116,22 @@ export class SaveContentComponent implements OnInit {
         return PageEnum[pageName];
       }
       return pageName ;
+    }
+  }
+
+  validationImageLink() {
+    const link: string = this.saveForm.controls['imgCover_Src'].value;
+
+    if (link.match('https://drive.google.com/')) {
+      let linkId = link.split('file/d/')[1];
+
+      if (!linkId) {
+        linkId = link.split('id=')[1];
+      } else {
+        linkId = linkId.split('/')[0];
+      }
+
+      this.saveForm.controls['imgCover_Src'].setValue(`https://drive.google.com/uc?id=${linkId}`);
     }
   }
 
